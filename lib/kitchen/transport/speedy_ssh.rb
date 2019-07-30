@@ -45,7 +45,8 @@ module Kitchen
         end
 
         def archive_locally(path, archive_path)
-          "tar -cf #{archive_path} -C #{::File.dirname(path)} #{::File.basename(path)}"
+          "tar --warning=no-unknown-keyword -cf #{archive_path} " \
+            "-C #{::File.dirname(path)} #{::File.basename(path)}"
         end
 
         def dearchive_remotely(archive_basename, remote)
